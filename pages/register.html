@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - VoteSecure</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/auth.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-vote-yea"></i>
+                <a href="../index.html" style="color: var(--primary-color);">VoteSecure</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link">Se Connecter</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1 class="auth-title">Inscription</h1>
+                    <p class="auth-subtitle">Créez votre compte pour commencer à voter</p>
+                </div>
+
+                <!-- Progress Indicator -->
+                <div class="progress-container">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Informations</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Vérification OTP</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Reconnaissance</div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Registration Form -->
+                <form id="registrationForm" class="auth-form step-form active">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="voterID">ID Électeur *</label>
+                            <input type="text" id="voterID" name="voterID" placeholder="Entrez votre ID électeur" required>
+                            <div class="input-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="aadharID">ID Aadhar *</label>
+                            <input type="text" id="aadharID" name="aadharID" placeholder="Entrez votre ID Aadhar" required>
+                            <div class="input-feedback"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Prénom *</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Votre prénom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Nom *</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Votre nom" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Numéro de Téléphone *</label>
+                        <div class="phone-input">
+                            <select id="countryCode" name="countryCode">
+                                <option value="+33">🇫🇷 +33</option>
+                                <option value="+1">🇺🇸 +1</option>
+                                <option value="+91">🇮🇳 +91</option>
+                                <option value="+44">🇬🇧 +44</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" placeholder="06 12 34 56 78" required>
+                        </div>
+                        <div class="input-feedback"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email (optionnel)</label>
+                        <input type="email" id="email" name="email" placeholder="votre@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date de Naissance *</label>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">
+                                J'accepte les <a href="#" class="link">conditions d'utilisation</a> et la 
+                                <a href="#" class="link">politique de confidentialité</a>
+                            </span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span class="btn-text">Continuer</span>
+                        <span class="btn-loading" style="display: none;">
+                            <div class="loading"></div>
+                            Vérification...
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Step 2: OTP Verification -->
+                <div id="otpForm" class="auth-form step-form">
+                    <div class="otp-header">
+                        <div class="otp-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Vérification OTP</h3>
+                        <p>Un code de vérification a été envoyé au numéro <span id="phoneDisplay"></span></p>
+                    </div>
+                    
+                    <div class="otp-input-container">
+                        <input type="text" class="otp-input" maxlength="1" data-index="0">
+                        <input type="text" class="otp-input" maxlength="1" data-index="1">
+                        <input type="text" class="otp-input" maxlength="1" data-index="2">
+                        <input type="text" class="otp-input" maxlength="1" data-index="3">
+                        <input type="text" class="otp-input" maxlength="1" data-index="4">
+                        <input type="text" class="otp-input" maxlength="1" data-index="5">
+                    </div>
+                    
+                    <div class="otp-feedback"></div>
+                    
+                    <div class="otp-timer">
+                        <span>Code expires dans : </span>
+                        <span id="otpTimer">05:00</span>
+                    </div>
+                    
+                    <button type="button" id="verifyOTP" class="btn btn-primary btn-full">
+                        <span class="btn-text">Vérifier le Code</span>
+                        <span class="btn-loading" style="display: none;">
+                            <div class="loading"></div>
+                            Vérification...
+                        </span>
+                    </button>
+                    
+                    <button type="button" id="resendOTP" class="btn btn-secondary btn-full" disabled>
+                        Renvoyer le Code
+                    </button>
+                    
+                    <button type="button" class="btn btn-link btn-back">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour
+                    </button>
+                </div>
+
+                <!-- Step 3: Facial Recognition -->
+                <div id="faceRecognitionForm" class="auth-form step-form">
+                    <div class="face-header">
+                        <div class="face-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Reconnaissance Faciale</h3>
+                        <p>Positionnez votre visage dans le cadre pour l'enregistrement</p>
+                    </div>
+                    
+                    <div class="camera-container">
+                        <video id="video" autoplay muted></video>
+                        <canvas id="canvas" style="display: none;"></canvas>
+                        <div class="camera-overlay">
+                            <div class="face-frame"></div>
+                        </div>
+                        <div class="camera-status" id="cameraStatus">
+                            <div class="status-icon">
+                                <i class="fas fa-circle" id="statusIcon"></i>
+                            </div>
+                            <span id="statusText">Initialisation de la caméra...</span>
+                        </div>
+                    </div>
+                    
+                    <div class="face-instructions">
+                        <div class="instruction">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Assurez-vous d'avoir un bon éclairage</span>
+                        </div>
+                        <div class="instruction">
+                            <i class="fas fa-user"></i>
+                            <span>Regardez directement la caméra</span>
+                        </div>
+                        <div class="instruction">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Tenez votre appareil stable</span>
+                        </div>
+                    </div>
+                    
+                    <div class="capture-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="captureProgress"></div>
+                        </div>
+                        <span id="captureText">0/10 photos capturées</span>
+                    </div>
+                    
+                    <div class="face-actions">
+                        <button type="button" id="startCapture" class="btn btn-primary">
+                            <i class="fas fa-camera"></i>
+                            Commencer la Capture
+                        </button>
+                        <button type="button" id="completeRegistration" class="btn btn-success" style="display: none;">
+                            <i class="fas fa-check"></i>
+                            Terminer l'Inscription
+                        </button>
+                    </div>
+                    
+                    <button type="button" class="btn btn-link btn-back">
+                        <i class="fas fa-arrow-left"></i>
+                        Retour
+                    </button>
+                </div>
+
+                <!-- Registration Success -->
+                <div id="successMessage" class="auth-form step-form">
+                    <div class="success-animation">
+                        <div class="success-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                    <h3>Inscription Réussie !</h3>
+                    <p>Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter pour voter.</p>
+                    <a href="login.html" class="btn btn-primary btn-full">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Se Connecter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/registration.js"></script>
+    <script src="../js/camera.js"></script>
+</body>
+</html>

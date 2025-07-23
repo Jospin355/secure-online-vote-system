@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote - VoteSecure</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/vote.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-vote-yea"></i>
+                <span>VoteSecure</span>
+            </div>
+            <div class="nav-user">
+                <div class="user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <span id="userName">Électeur Authentifié</span>
+                </div>
+                <button class="btn btn-secondary btn-sm" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Déconnexion
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Vote Section -->
+    <section class="vote-section">
+        <div class="container">
+            <!-- Election Info -->
+            <div class="election-header">
+                <div class="election-info">
+                    <h1 class="election-title">Élection Présidentielle 2025</h1>
+                    <div class="election-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Fin le 29 Aout 2026</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span id="timeRemaining">23h 45m restantes</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-users"></i>
+                            <span id="totalVoters">20,586,234 électeurs inscrits</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="security-badge-large">
+                    <div class="badge-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="badge-text">
+                        <strong>Vote Sécurisé</strong>
+                        <small>Authentifié & Chiffré</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voting Instructions -->
+            <div class="voting-instructions">
+                <h3>Instructions de Vote</h3>
+                <div class="instructions-grid">
+                    <div class="instruction-item">
+                        <div class="instruction-number">1</div>
+                        <div class="instruction-text">
+                            <strong>Sélectionnez votre candidat</strong>
+                            <p>Cliquez sur le candidat de votre choix</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-number">2</div>
+                        <div class="instruction-text">
+                            <strong>Confirmez votre choix</strong>
+                            <p>Vérifiez votre sélection avant validation</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-number">3</div>
+                        <div class="instruction-text">
+                            <strong>Soumettez votre vote</strong>
+                            <p>Votre vote sera enregistré de manière sécurisée</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Candidates Section -->
+            <div class="candidates-section">
+                <h3 class="section-title">Candidats à l'Élection Présidentielle</h3>
+                <div class="candidates-grid" id="candidatesGrid">
+                    <!-- Candidates will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Vote Confirmation Modal -->
+            <div id="voteModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Confirmer votre Vote</h3>
+                        <button class="modal-close" id="closeModal">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="confirmation-candidate">
+                            <img id="confirmCandidatePhoto" src="" alt="">
+                            <div class="candidate-details">
+                                <h4 id="confirmCandidateName"></h4>
+                                <p id="confirmCandidateParty"></p>
+                            </div>
+                        </div>
+                        <div class="confirmation-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>Attention :</strong> Une fois votre vote confirmé, il ne pourra plus être modifié.</p>
+                        </div>
+                        <div class="security-verification">
+                            <div class="verification-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Identité vérifiée</span>
+                            </div>
+                            <div class="verification-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Session sécurisée</span>
+                            </div>
+                            <div class="verification-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Vote chiffré</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" id="cancelVote">
+                            <i class="fas fa-times"></i>
+                            Annuler
+                        </button>
+                        <button class="btn btn-primary" id="confirmVote">
+                            <i class="fas fa-check"></i>
+                            Confirmer mon Vote
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vote Success Modal -->
+            <div id="successModal" class="modal">
+                <div class="modal-content success-modal">
+                    <div class="success-animation">
+                        <div class="success-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                    <h3>Vote Enregistré avec Succès !</h3>
+                    <div class="vote-receipt">
+                        <div class="receipt-item">
+                            <strong>Numéro de Transaction :</strong>
+                            <span id="transactionId">VT-2024-789456123</span>
+                        </div>
+                        <div class="receipt-item">
+                            <strong>Date et Heure :</strong>
+                            <span id="voteTimestamp"></span>
+                        </div>
+                        <div class="receipt-item">
+                            <strong>Candidat Sélectionné :</strong>
+                            <span id="votedCandidate"></span>
+                        </div>
+                    </div>
+                    <p class="success-message">
+                        Votre vote a été enregistré de manière sécurisée et anonyme. 
+                        Vous pouvez maintenant consulter les résultats en temps réel.
+                    </p>
+                    <div class="success-actions">
+                        <a href="results.html" class="btn btn-primary">
+                            <i class="fas fa-chart-bar"></i>
+                            Voir les Résultats
+                        </a>
+                        <button class="btn btn-secondary" id="downloadReceipt">
+                            <i class="fas fa-download"></i>
+                            Télécharger le Reçu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/vote.js"></script>
+    <script src="../js/candidates.js"></script>
+</body>
+</html>

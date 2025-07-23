@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats - VoteSecure</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/results.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-vote-yea"></i>
+                <a href="../index.html" style="color: var(--primary-color);">VoteSecure</a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="../index.html" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="vote.html" class="nav-link">Voter</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <!-- Results Header -->
+            <div class="results-header">
+                <div class="results-info">
+                    <h1 class="results-title">Résultats en Temps Réel</h1>
+                    <p class="results-subtitle">Élection Présidentielle 2024</p>
+                    <div class="last-update">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Dernière mise à jour : <span id="lastUpdate"></span></span>
+                    </div>
+                </div>
+                <div class="results-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="totalVotes">24,856,231</div>
+                            <div class="stat-label">Votes Exprimés</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="turnoutRate">67.3%</div>
+                            <div class="stat-label">Taux de Participation</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="processedBureau">8,435</div>
+                            <div class="stat-label">Bureaux Traités</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Répartition des Votes</h3>
+                            <div class="chart-controls">
+                                <button class="btn btn-sm active" data-chart="pie">Camembert</button>
+                                <button class="btn btn-sm" data-chart="bar">Barres</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="votesChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Évolution Temporelle</h3>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="timelineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Results -->
+            <div class="detailed-results">
+                <div class="results-table-card">
+                    <div class="table-header">
+                        <h3>Résultats Détaillés</h3>
+                        <div class="table-actions">
+                            <button class="btn btn-secondary btn-sm" id="exportCSV">
+                                <i class="fas fa-download"></i>
+                                Exporter CSV
+                            </button>
+                            <button class="btn btn-secondary btn-sm" id="exportPDF">
+                                <i class="fas fa-file-pdf"></i>
+                                Exporter PDF
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="results-table" id="resultsTable">
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Candidat</th>
+                                    <th>Parti</th>
+                                    <th>Votes</th>
+                                    <th>Pourcentage</th>
+                                    <th>Évolution</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsTableBody">
+                                <!-- Results will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regional Results -->
+            <div class="regional-results">
+                <div class="regional-header">
+                    <h3>Résultats par Région</h3>
+                    <select id="regionSelect" class="region-selector">
+			  <option value="all">Toutes les Régions</option>
+			  <option value="adamaoua">Adamaoua</option>
+			  <option value="centre">Centre</option>
+			  <option value="est">Est</option>
+			  <option value="extreme-nord">Extrême-Nord</option>
+			  <option value="littoral">Littoral</option>
+			  <option value="nord">Nord</option>
+			  <option value="nord-ouest">Nord-Ouest</option>
+			  <option value="ouest">Ouest</option>
+			  <option value="sud">Sud</option>
+			  <option value="sud-ouest">Sud-Ouest</option>
+			</select>
+
+                </div>
+                <div class="regional-grid" id="regionalGrid">
+                    <!-- Regional results will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Live Feed -->
+            <div class="live-feed">
+                <div class="feed-header">
+                    <h3>Actualités en Direct</h3>
+                    <div class="live-indicator">
+                        <div class="live-dot"></div>
+                        <span>EN DIRECT</span>
+                    </div>
+                </div>
+                <div class="feed-container" id="liveFeed">
+                    <!-- Live updates will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/results.js"></script>
+    <script src="../js/charts.js"></script>
+</body>
+</html>

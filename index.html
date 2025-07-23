@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoteSecure - Système de Vote Électronique Sécurisé</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-vote-yea"></i>
+                <span>VoteSecure</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#accueil" class="nav-link active">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#fonctionnalites" class="nav-link">Fonctionnalités</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#securite" class="nav-link">Sécurité</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#faq" class="nav-link">FAQ</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/login.html" class="nav-link btn-login">Se Connecter</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/register.html" class="nav-link btn-register">S'inscrire</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Vote Électronique <span class="gradient-text">Sécurisé</span>
+                </h1>
+                <p class="hero-description">
+                    Plateforme de vote en ligne avec authentification à triple niveau : 
+                    vérification d'identité, OTP et reconnaissance faciale pour une sécurité maximale.
+                </p>
+                <div class="hero-buttons">
+                    <a href="pages/register.html" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Commencer à voter
+                    </a>
+                    <a href="#fonctionnalites" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        En savoir plus
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Sécurité</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Disponible 24 heures sur 24, 7 jours sur 7</span>
+                        <span class="stat-label">Disponibilité</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Transparent</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="security-animation">
+                    <div class="security-layer layer-1">
+                        <i class="fas fa-id-card"></i>
+                        <span>Vérification ID</span>
+                    </div>
+                    <div class="security-layer layer-2">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Code OTP</span>
+                    </div>
+                    <div class="security-layer layer-3">
+                        <i class="fas fa-eye"></i>
+                        <span>Reconnaissance Faciale</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="fonctionnalites" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Fonctionnalités Avancées</h2>
+                <p class="section-description">
+                    Notre système combine les dernières technologies pour garantir un vote sécurisé et transparent
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Authentification Triple</h3>
+                    <p class="feature-description">
+                        Trois niveaux de sécurité : vérification d'identité, OTP par SMS, et reconnaissance faciale IA
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">IA Avancée</h3>
+                    <p class="feature-description">
+                        Algorithmes Haar Cascade et LBPH pour une reconnaissance faciale précise et fiable
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="feature-title">Base de Données Sécurisée</h3>
+                    <p class="feature-description">
+                        Stockage chiffré avec PostgreSQL pour protéger toutes les données sensibles
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Temps Réel</h3>
+                    <p class="feature-description">
+                        Suivi en temps réel des votes avec mise à jour instantanée des résultats
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Responsive</h3>
+                    <p class="feature-description">
+                        Interface adaptative fonctionnant parfaitement sur tous les appareils
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Analyse Avancée</h3>
+                    <p class="feature-description">
+                        Tableaux de bord et statistiques détaillées pour un suivi complet
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="securite" class="security">
+        <div class="container">
+            <div class="security-content">
+                <div class="security-text">
+                    <h2 class="section-title">Sécurité Maximale</h2>
+                    <p class="section-description">
+                        Notre système utilise les technologies les plus avancées pour garantir l'intégrité de chaque vote
+                    </p>
+                    <div class="security-features">
+                        <div class="security-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Chiffrement End-to-End</h4>
+                                <p>Toutes les données sont chiffrées de bout en bout</p>
+                            </div>
+                        </div>
+                        <div class="security-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Audit Trail Complet</h4>
+                                <p>Traçabilité complète de toutes les actions</p>
+                            </div>
+                        </div>
+                        <div class="security-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h4>Prévention des Fraudes</h4>
+                                <p>Système anti-fraude intégré et surveillance 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="security-visual">
+                    <div class="security-diagram">
+                        <div class="auth-step step-1">
+                            <div class="step-icon">1</div>
+                            <div class="step-content">
+                                <h4>Identifiants</h4>
+                                <p>Vérification ID électeur + Aadhar</p>
+                            </div>
+                        </div>
+                        <div class="auth-step step-2">
+                            <div class="step-icon">2</div>
+                            <div class="step-content">
+                                <h4>OTP SMS</h4>
+                                <p>Code de vérification mobile</p>
+                            </div>
+                        </div>
+                        <div class="auth-step step-3">
+                            <div class="step-icon">3</div>
+                            <div class="step-content">
+                                <h4>Reconnaissance</h4>
+                                <p>Vérification faciale IA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Questions Fréquentes</h2>
+                <p class="section-description">
+                    Trouvez les réponses aux questions les plus courantes sur notre système de vote
+                </p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment fonctionne l'authentification à triple niveau ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Notre système utilise trois couches de sécurité : d'abord la vérification de vos identifiants (ID électeur et Aadhar), puis l'envoi d'un code OTP sur votre téléphone, et enfin la reconnaissance faciale par intelligence artificielle pour confirmer votre identité.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Mes données personnelles sont-elles sécurisées ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolument. Toutes les données sont chiffrées avec les dernières normes de sécurité, stockées dans une base de données PostgreSQL sécurisée, et nous ne partageons jamais vos informations avec des tiers.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Que se passe-t-il si la reconnaissance faciale échoue ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Si la reconnaissance faciale échoue, vous pouvez réessayer en vous assurant que votre visage est bien éclairé et face à la caméra. Après plusieurs tentatives, vous pouvez contacter notre support technique pour une assistance personnalisée.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Puis-je voter depuis mon téléphone mobile ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, notre plateforme est entièrement responsive et fonctionne parfaitement sur tous les appareils : smartphones, tablettes et ordinateurs.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment puis-je être sûr que mon vote est comptabilisé ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Après avoir voté, vous recevrez une confirmation avec un numéro de transaction unique. Vous pouvez également consulter les résultats en temps réel sur notre plateforme.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Que faire si j'oublie mes identifiants ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vous pouvez utiliser la fonction "Mot de passe oublié" sur la page de connexion. Un lien de récupération sera envoyé à votre numéro de téléphone enregistré.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Besoin d'aide ?</h2>
+                    <p>Notre équipe est disponible 24h-24 - 7j-7 pour vous assister</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Téléphone</h4>
+                                <p>+237 686 50 15 10 </p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>support@votesecure.fr</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Horaires</h4>
+                                <p>24h/24 - 7j/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Contactez-nous</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Votre email" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="subject" name="subject" required>
+                                <option value="">Sujet</option>
+                                <option value="support">Support technique</option>
+                                <option value="inscription">Problème d'inscription</option>
+                                <option value="vote">Problème de vote</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Votre message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Envoyer
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-vote-yea"></i>
+                        <span>VoteSecure</span>
+                    </div>
+                    <p class="footer-description">
+                        Plateforme de vote électronique sécurisé avec authentification avancée et intelligence artificielle.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                        <li><a href="#securite">Sécurité</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="pages/register.html">Inscription</a></li>
+                        <li><a href="pages/login.html">Connexion</a></li>
+                        <li><a href="pages/vote.html">Voter</a></li>
+                        <li><a href="pages/results.html">Résultats</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Aide</a></li>
+                        <li><a href="#">Conditions d'utilisation</a></li>
+                        <li><a href="#">Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 VoteSecure. Tous droits réservés.</p>
+                </div>
+                <div class="footer-badges">
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>SSL Sécurisé</span>
+                    </div>
+                    <div class="security-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Chiffré 256-bit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/faq.js"></script>
+</body>
+</html>
